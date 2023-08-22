@@ -7,13 +7,18 @@ import (
 	"taskbego/handlers"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	app := fiber.New()
 
 	// Mengambil nilai environment variable MONGODB_URI
-	mongoURI := os.Getenv("mongodb+srv://chrisyuda:yudacihuy123@clusterdb.xld4k4m.mongodb.net/")
+	mongoURI := os.Getenv("MONGODB_URI")
 
 	if mongoURI == "" {
 		log.Fatal("MONGODB_URI environment variable is not set")
@@ -33,7 +38,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "3000" // Default port
+		port = "3001" // Default port
 	}
 
 	log.Fatal(app.Listen(":" + port))
