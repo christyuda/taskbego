@@ -11,7 +11,7 @@ import (
 func main() {
 	app := fiber.New()
 
-	err := db.ConnectMongoDB("mongodb://localhost:27017", "dbgolang", "tasks")
+	err := db.ConnectMongoDB("mongodb+srv://chrisyuda:yudacihuy123@clusterdb.xld4k4m.mongodb.net/", "dbgolang", "tasks")
 	if err != nil {
 		log.Fatal("Error connecting to MongoDB:", err)
 	}
